@@ -11,15 +11,15 @@ router.post('/Country', async(req, res) => {
         res.status(400).send(error);
     }
 });
-router.get("/Country",async(req,res)=>{
-    try {
-        const countryData = await Country.find();
-        console.log(countryData)
-        res.send(countryData);
-    } catch (error) {
-        res.status(404).send(error);
-    }
-})
+// router.get("/Country",async(req,res)=>{
+//     try {
+//         const countryData = await Country.find();
+//         console.log(countryData)
+//         res.send(countryData);
+//     } catch (error) {
+//         res.status(404).send(error);
+//     }
+// })
 router.post("/District", async(req, res) => {
     try {
         const data = await District.insertMany(req.body);
@@ -58,19 +58,41 @@ router.get("/City",async(req,res)=>{
 })
 router.get("/cityLoc",async(req,res)=>{
     try {
-        // const options = {
-        //     location:{
-        //         $geoIntersects:{
-        //             $geometry:{
-        //                 type:"point",
-        //                 coordinates:[[27.682755,85.333225]]
-        //             }
-        //         }
-        //     }
-        // }
-        const result = await District.find();
-        console.log("result==",result);
-        res.status(200).send(result);
+        const options = {
+            geometry:{
+                $geoIntersects:{
+                    $geometry:{
+                        type:"Point",
+                        coordinates:[87.27848052978516
+                            ,
+                            26.45674234284815]
+                    }
+                }
+            }
+        }
+        const resultDist = await District.find(options);
+        const name_Dist = await resultDist[0].name;
+        const cooDist = await resultDist[0].geometry[0].coordinates;
+        const countryFlag = {
+            geometry:{
+                $geoIntersects:{
+                    $geometry:{
+                        type:"Polygon",
+                        coordinates:cooDist
+                    }
+                }
+            }
+        }
+        const resultCountry = await Country.find(countryFlag);
+        const name_Country = await resultCountry[0].name;
+        const id_Country = await resultCountry[0].country_id;
+        // const resultCount = await Country.find(resultDist);
+        // console.log("resultDist ==",resultDist);
+        // const objDist = JSON.parse(resultDist);
+        // console.log(JSON.parse(resultDist));
+        // console.log("nameofDist==",name_Dist);
+        // console.log("latlng == ",cooDist);
+        res.status(200).send({name_Dist,name_Country,id_Country});
     } catch (error) {
         res.send(error);
     }
