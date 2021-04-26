@@ -1,0 +1,61 @@
+{
+	"_id" : ObjectId("6082cede26de9812a3b42019"),
+	"geometry" : [
+		{
+			"type" : "Point",
+			"coordinates" : [
+				30.601215362548828,
+				24.67521495927608
+			]
+		}
+	],
+	"city_id" : 1,
+	"name" : "Baris Egypt",
+	"__v" : 0
+}
+{
+	"_id" : ObjectId("6082cfed26de9812a3b4201a"),
+	"geometry" : [
+		{
+			"type" : "Point",
+			"coordinates" : [
+				2.122786045074463,
+				41.38086598684854
+			]
+		}
+	],
+	"city_id" : 2,
+	"name" : "Camp Nou",
+	"__v" : 0
+}
+{
+	"_id" : ObjectId("6082d2e326de9812a3b4201b"),
+	"geometry" : [
+		{
+			"type" : "Point",
+			"coordinates" : [
+				87.27848052978516,
+				26.45674234284815
+			]
+		}
+	],
+	"city_id" : 3,
+	"name" : "Biratnagar",
+	"__v" : 0
+}
+{
+	"_id" : ObjectId("6082d36526de9812a3b4201c"),
+	"geometry" : [
+		{
+			"type" : "Point",
+			"coordinates" : [
+				85.33368587493896,
+				27.684596904656505
+			]
+		}
+	],
+	"city_id" : 4,
+	"name" : "Sankhamul",
+	"__v" : 0
+}
+
